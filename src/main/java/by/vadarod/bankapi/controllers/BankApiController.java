@@ -1,11 +1,13 @@
 package by.vadarod.bankapi.controllers;
 
+import by.vadarod.bankapi.dto.response.RateResponse;
 import by.vadarod.bankapi.services.ExchangeRateService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,7 +21,12 @@ public class BankApiController {
     private final ExchangeRateService exchangeRateService;
 
     @GetMapping("/load")
-    public ResponseEntity<String> loadExchangeRateByDate(@RequestParam(name = "date") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date) {
-        return ResponseEntity.status(HttpStatus.OK).body(String.format("Read entities=%d", exchangeRateService.loadExchangeRateByDate(date)));
+    public ResponseEntity<String> loadExchangeRate(@RequestParam(name = "date") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date) {
+        return ResponseEntity.status(HttpStatus.OK).body(String.format("Read rate list size=%d", exchangeRateService.loadExchangeRateByDate(date)));
+    }
+
+    @GetMapping("/rates/{currentId}")
+    public ResponseEntity<RateResponse> getExchangeRate(@PathVariable(name = "currentId") Long currentId, @RequestParam(name = "date") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date) {
+        return ResponseEntity.status(HttpStatus.OK).body(exchangeRateService.getExchangeRateByCurrentIdAndDate(currentId, date));
     }
 }

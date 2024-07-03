@@ -21,7 +21,7 @@ public class Rate {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "current_id", nullable = false, unique = true)
+    @Column(name = "current_id", nullable = false)
     private Long currentId;
 
     @Column(name = "date_time", nullable = false)
