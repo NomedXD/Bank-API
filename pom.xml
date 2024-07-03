@@ -9,23 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>by.vadarod</groupId>
-    <artifactId>bank-api</artifactId>
+    <artifactId>bank-api-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>bank-api</name>
-    <description>bank-api</description>
-    <url/>
-    <licenses>
-        <license/>
-    </licenses>
-    <developers>
-        <developer/>
-    </developers>
-    <scm>
-        <connection/>
-        <developerConnection/>
-        <tag/>
-        <url/>
-    </scm>
+    <name>bank-api-service</name>
+    <description>bank-api-service</description>
     <properties>
         <java.version>17</java.version>
         <spring-cloud.version>2023.0.2</spring-cloud.version>
@@ -46,6 +33,11 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>2.6.0</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
